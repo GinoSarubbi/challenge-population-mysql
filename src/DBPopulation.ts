@@ -1,5 +1,5 @@
 import { createPool, PoolOptions } from "mysql2/promise";
-import { City } from "../database/cities";
+import { cities, City } from "../database/cities";
 
 class DBPopulation {
   private readonly config: PoolOptions;
@@ -47,7 +47,7 @@ class DBPopulation {
   }
 
   async updateNumberOfInhabitantsById(id: number, newPopulation: number) {
-    const query = ``;
+    const query =`UPDATE city SET population = ${newPopulation} WHERE id = ${id}`;
     await this.queryDB(query);
   }
 }
